@@ -8,13 +8,19 @@ public class Libreria {
 
     public Libreria(){}
 
-    public void agregarNuevoLibro(){}
+    public static void agregarNuevoLibro(){
 
-    public void mostrarLibros(){}
+    }
 
-    public void venderLibro(){}
+    public static void mostrarLibros(){
 
-    public int crearNuevoId(){
+    }
+
+    public static void venderLibro(){
+        
+    }
+
+    private int crearNuevoId(){
         return 1;
     }
 
