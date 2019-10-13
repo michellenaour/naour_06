@@ -19,7 +19,9 @@ import org.json.simple.parser.ParseException;
 
 
 public class GestorJson {
-
+    /**
+     * Verifica si libreria.json existe, de no existir lo crea.
+     */
     public static void crearStockVacio(){
         if(new File("libreria.json").exists()){}
         else{
@@ -30,10 +32,18 @@ public class GestorJson {
         }
     }
 
-
-    public static JSONObject encode(int Id,String titulo, String autor,double precio){
+    /**
+     * Serializa un libro a formato JSONObject.
+     *
+     * @param codigo codigo de identificación del libro.
+     * @param titulo nombre del titulo.
+     * @param autor nombre del autor del libro.
+     * @param precio precio del nombre.
+     * @return JSONObject Libro en formato JSON.
+     */
+    public static JSONObject encode(int codigo,String titulo, String autor,double precio){
         JSONObject obj = new JSONObject();
-        obj.put("codigo", Id);
+        obj.put("codigo", codigo);
         obj.put("Titulo", titulo);
         obj.put("Autor", autor);
         obj.put("Precio", precio);
@@ -41,6 +51,10 @@ public class GestorJson {
         return obj;
     }
 
+    /**
+     * Agrega el texto almacenado en el JSONObject en un archivo .json y lo guarda.
+     * @param obj Libro en formato JSON.
+     */
     public static void saveFile(JSONObject obj) throws IOException {
 
         String saltoLinea = System.getProperty("line.separator");
@@ -63,7 +77,13 @@ public class GestorJson {
 
     }
 
-
+    /**
+     * Deserializa las lineas obtenidas de un .json y genera un Libro.
+     *
+     * @param lineas libros en formato String.
+     * @param n Cantidad de lineas del .json.
+     * @return Libro Libro como objeto de la clase del mismo nombre.
+     */
     public static Libro decode(ArrayList<String> lineas, int n) {
         Libro l = new Libro();
 
@@ -137,10 +157,10 @@ public class GestorJson {
     }
 
     /**
-     * Genera Recetario con el contenido del archivo .json.
+     * Genera Libreria con el contenido del archivo .json.
      *
      * @param lineas Contiene el contenido del .json, de manera que cada linea es un String en el ArrayList.
-     * @return Recetario Recetario que contiene todas las recetas del .json.
+     * @return Libreria Libreria que contiene todas las recetas del .json.
      *
      */
 
@@ -158,9 +178,9 @@ public class GestorJson {
     }
 
     /**
-     * Añande una receta al archivo .json.
+     * Añande un libro al archivo .json.
      *
-     * @param libro Receta para ser agregada al .json.
+     * @param libro Libro para ser agregado al .json.
      *
      */
 
@@ -173,9 +193,9 @@ public class GestorJson {
     }
 
      /**
-     * Elimina una receta del .json, pero no afecta a las demás recetas.
+     * Elimina un libro del .json, pero no afecta a los demás libros.
      *
-     * @param codigo Nombre de la receta a eliminar.
+     * @param codigo codigo de identificación de la receta a eliminar.
      *
      */
 
@@ -191,7 +211,7 @@ public class GestorJson {
 
         }
 
-        vaciarLibreria("libreria.json");
+        vaciarLibreria();
 
         for(int i=0; i<libreria.size(); i++){
 
@@ -201,10 +221,14 @@ public class GestorJson {
 
     }
 
-    public static void vaciarLibreria(String dir){
+    /**
+     * Elimina completamente el contenido del .json.
+     */
+
+    public static void vaciarLibreria(){
 
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(dir));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("libreria.json"));
             bw.write("");
             bw.close();
         }catch(IOException e){}
