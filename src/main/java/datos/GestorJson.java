@@ -20,7 +20,6 @@ import org.json.simple.parser.ParseException;
 
 public class GestorJson {
 
-
     public static void crearStockVacio(){
         if(new File("libreria.json").exists()){}
         else{
@@ -31,14 +30,10 @@ public class GestorJson {
         }
     }
 
-    public static void llenarJSONArray(JSONArray array, Object obj) {
-        array.add(obj);
-
-    }
 
     public static JSONObject encode(int Id,String titulo, String autor,double precio){
         JSONObject obj = new JSONObject();
-        obj.put("codigoId", Id);
+        obj.put("codigo", Id);
         obj.put("Titulo", titulo);
         obj.put("Autor", autor);
         obj.put("Precio", precio);
@@ -57,7 +52,7 @@ public class GestorJson {
             textoViejo += lineas.get(x) + saltoLinea;
         }
 
-        try (FileWriter file = new FileWriter("recetario.json")) {
+        try (FileWriter file = new FileWriter("libreria.json")) {
 
             file.write(textoViejo + obj.toJSONString());
             file.flush();
@@ -177,7 +172,7 @@ public class GestorJson {
         saveFile(encode(codigo,titulo,autor,precio));
     }
 
-    /**
+     /**
      * Elimina una receta del .json, pero no afecta a las demás recetas.
      *
      * @param codigo Nombre de la receta a eliminar.
@@ -215,9 +210,5 @@ public class GestorJson {
         }catch(IOException e){}
 
     }
-
-
-
-
 
 }

@@ -2,13 +2,14 @@ package interaccionUsuario;
 
 import contextoProblema.Libreria;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
 	static Scanner teclado=new Scanner(System.in);
 
-	public void menuPrincipal() {
+	public static void menuPrincipal() throws IOException {
 		mostartMenuPrincipal();
 		int opcion = leerOpcion();
 		seleccionMenu(opcion);
@@ -23,7 +24,7 @@ public class Menu {
 		System.out.println("            Ingrese una opción:");
 	}
 
-	private void seleccionMenu(int op){
+	private static void seleccionMenu(int op) throws IOException {
 		switch (op) {
 			case 1:
 				Libreria.agregarNuevoLibro();
@@ -52,9 +53,10 @@ public class Menu {
 
 		while (flag==false){
 			opcion=leerInt(" la opcion que desee ejecutar.");
-			if(opcion>=1 && opcion>=4){
+			if(opcion>=1 && opcion<=4){
 				flag=true;
 			}
+			else{System.out.println("error! las opciones diponibles son: 1, 2, 3 y 4");}
 		}
 
 		return opcion;
