@@ -15,7 +15,7 @@ public class Menu {
 		seleccionMenu(opcion);
 	}
 
-	public static void mostartMenuPrincipal(){
+	private static void mostartMenuPrincipal(){
 		System.out.println("--------------------MENÚ--------------------");
 		System.out.println("( 1 )   Ingresar un nuevo libro al stock");
 		System.out.println("( 2 )   Mostrar los libros en stock");

@@ -34,7 +34,6 @@ public class Libreria {
         double precio=Menu.leerPrecio();
         return new Libro(codigo,titulo,autor, precio);
     }
-
     /**
      * muestra los datos de todos los libros, que se obtienen a traves los metodos de la clase GestorJson contarLineas y vectorLineas
      */
@@ -54,14 +53,11 @@ public class Libreria {
             GestorJson.borrarLibroArchivo(codigo);}
         else {System.out.println("no se encontro un libro con el código:"+codigo);}
     }
-
-
     /**
      * Deserializa las lineas obtenidas de un .json y genera una Receta.
      * @param codigo el numero que ingreso el usuario del libro que desea vender.
      * @return si encuentra el libro con el codigo ingresado regresa el index del codigo, si no lo encuentra regresa -1
      */
-
     private static int buscarIndex(int codigo){
        int index =0;
         for(int i=0; i<libros.size(); i++){
