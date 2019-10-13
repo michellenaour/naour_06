@@ -52,7 +52,7 @@ public class Menu {
 		boolean flag = false;
 
 		while (flag==false){
-			opcion=leerInt(" la opcion que desee ejecutar.");
+			opcion=leerInt(" ");
 			if(opcion>=1 && opcion<=4){
 				flag=true;
 			}
@@ -64,7 +64,7 @@ public class Menu {
 
 	private static int leerInt(String mensaje){
 			int num;
-			System.out.println("ingrese "+ mensaje);
+			System.out.println( mensaje);
 			do{
 				try{
 					num=teclado.nextInt();
@@ -78,6 +78,7 @@ public class Menu {
 			while(num<0);
 			return num;
 	}
+
 	public static String leerTitulo(){
 		System.out.println("Ingrese el Titulo del libro:");
 		return teclado.next();
@@ -93,7 +94,7 @@ public class Menu {
 	}
 
 	public static double leerPrecio(){
-		return leerDouble("Ingrese el precio de venta del libro:");
+		return leerDouble("ingrese el precio del libro.");
 	}
 
 	private static double leerDouble(String txt) {

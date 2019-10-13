@@ -32,8 +32,6 @@ public class Libro {
         this.autor = autor;
     }
 
-
-
     public double getPrecio() {
         return precio;
     }
@@ -42,14 +40,13 @@ public class Libro {
         this.precio = precio;
     }
 
-
-
     public Libro(){
         this.codigo=0;
         this.autor="";
         this.titulo="";
         this.precio=0;
     }
+
     public Libro(int codigo, String titulo,String autor, double precio){
         this.codigo=codigo;
         this.autor=autor;

@@ -8,6 +8,7 @@ public class Main {
 
     public static void main (String[]args) throws IOException {
         GestorJson.crearStockVacio();
+        GestorJson.vaciarLibreria("libreria.json");
         interaccionUsuario.Menu.menuPrincipal();
     }
 }
